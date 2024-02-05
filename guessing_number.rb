@@ -1,13 +1,13 @@
-class LuckyNumber
+class GuessingNumber
   attr_reader :attempts
   attr_reader :guess_range
   attr_reader :max_attempts
-  attr_reader :lucky_number
+  attr_reader :target_number
 
   def initialize(guess_range, max_attempts)
     @max_attempts = max_attempts
     @guess_range = guess_range
-    @lucky_number = rand(1..@guess_range)
+    @target_number = rand(1..@guess_range)
     @attempts = Array.new
 
   end 
@@ -21,11 +21,11 @@ class LuckyNumber
   end
 
   def lower_guess?(num)
-    num < lucky_number
+    num < target_number
   end
 
   def higher_guess?(num)
-    num > lucky_number
+    num > target_number
   end
 
   def valid_guess(num)
@@ -34,7 +34,7 @@ class LuckyNumber
   end
 
   def won?(num)
-    num == @lucky_number
+    num == @target_number
   end
 
   def reached_max_attempts?
@@ -47,7 +47,7 @@ class LuckyNumber
   
   def reset
     @attemps = []
-    @lucky_number = rand(1..@guess_range)
+    @target_number = rand(1..@guess_range)
   end
 
   def guesses # custom getter

@@ -1,10 +1,10 @@
-require_relative "lucky_number"
+require_relative "guessing_number"
 
 class App
   attr_reader :guess
 
   def initialize(guess_range=15, max_attempts=5)
-    @guess = LuckyNumber.new(guess_range, max_attempts)
+    @guess = GuessingNumber.new(guess_range, max_attempts)
   end
   def run
     loop do
@@ -49,7 +49,7 @@ class App
       end #begin
     end #loop
     if @guess.reached_max_attempts?
-      puts "Sorry, you have reached the maximum number of attempts. The correct number is #{@guess.lucky_number}"
+      puts "Sorry, you have reached the maximum number of attempts. The correct number is #{@guess.target_number}"
     end
   end #run
 end #class App
